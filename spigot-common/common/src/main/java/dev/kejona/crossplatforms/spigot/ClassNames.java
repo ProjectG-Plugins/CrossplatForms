@@ -22,9 +22,23 @@ public final class ClassNames {
     public static final Field META_SKULL_PROFILE;
 
     static {
-        NMS_VERSION = Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
-        CRAFTBUKKIT_PACKAGE = "org.bukkit.craftbukkit." + NMS_VERSION;
+        String bukkitVersion = Bukkit.getBukkitVersion();
+        String versionPackage = "unknown";
+        try {
+            String[] parts = bukkitVersion.split("-")[0].split("\\.");
+            if (parts.length >= 2) {
+                versionPackage = "v" + parts[0] + "_" + parts[1] + "_R1";
+            }
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to determine NMS version", e);
+        }
 
+        if (versionPackage.equals("unknown")) {
+            throw new IllegalStateException("Unable to determine NMS version from Bukkit version string");
+        }
+
+        NMS_VERSION = versionPackage;
+        CRAFTBUKKIT_PACKAGE = "org.bukkit.craftbukkit." + NMS_VERSION;
         Class<?> craftPlayer = ReflectionUtils.requireClass(CRAFTBUKKIT_PACKAGE + ".entity.CraftPlayer");
         PLAYER_GET_PROFILE = ReflectionUtils.requireMethod(craftPlayer, "getProfile");
 
