@@ -24,25 +24,48 @@ public final class ClassNames {
     static {
         String bukkitVersion = Bukkit.getBukkitVersion();
         String versionPackage = "unknown";
+
         try {
-            String[] parts = bukkitVersion.split("-")[0].split("\\.");
-            if (parts.length >= 2) {
-                versionPackage = "v" + parts[0] + "_" + parts[1] + "_R1";
+            String[] hyphenParts = bukkitVersion.split("-");
+            if (hyphenParts.length >= 2) {
+                // Main version part is the first element (e.g., 1.21)
+                String mainVersion = hyphenParts[0];
+                // Release part is the second element (e.g., R0.1, R1, R2)
+                String releasePart = hyphenParts[1];
+
+                // Remove 'R' prefix and any leading zeros from the release part
+                String normalizedReleasePart = normalizeReleasePart(releasePart);
+
+                // Split main version by dot to get major and minor version
+                String[] versionParts = mainVersion.split("\\.");
+                if (versionParts.length >= 2) {
+                    // Combine major version, minor version, and normalized release part
+                    versionPackage = "v" + versionParts[0] + "_" + versionParts[1] + "_" + normalizedReleasePart;
+                }
+            } else {
+                throw new IllegalStateException("Bukkit version string does not contain expected format");
             }
         } catch (Exception e) {
-            throw new IllegalStateException("Failed to determine NMS version", e);
+            throw new IllegalStateException("Failed to determine NMS version from Bukkit version string", e);
         }
 
-        if (versionPackage.equals("unknown")) {
-            throw new IllegalStateException("Unable to determine NMS version from Bukkit version string");
-        }
-
+        Bukkit.getLogger().info(versionPackage);
         NMS_VERSION = versionPackage;
+
         CRAFTBUKKIT_PACKAGE = "org.bukkit.craftbukkit." + NMS_VERSION;
+
         Class<?> craftPlayer = ReflectionUtils.requireClass(CRAFTBUKKIT_PACKAGE + ".entity.CraftPlayer");
         PLAYER_GET_PROFILE = ReflectionUtils.requireMethod(craftPlayer, "getProfile");
 
         Class<?> craftMetaSkull = ReflectionUtils.requireClass(CRAFTBUKKIT_PACKAGE + ".inventory.CraftMetaSkull");
         META_SKULL_PROFILE = ReflectionUtils.requireField(craftMetaSkull, "profile");
+    }
+
+    private static String normalizeReleasePart(String releasePart) {
+        String normalizedPart = releasePart.replace(".","").replaceFirst("R", "").replaceFirst("^0+(?!$)", "");
+        if (normalizedPart.isEmpty()) {
+            normalizedPart = "1";
+        }
+        return "R" + normalizedPart;
     }
 }
