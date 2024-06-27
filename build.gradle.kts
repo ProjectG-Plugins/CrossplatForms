@@ -62,11 +62,11 @@ allprojects{
 
 subprojects {
     dependencies {
-        testAnnotationProcessor("org.projectlombok:lombok:1.18.26")
-        testCompileOnly("org.projectlombok:lombok:1.18.26")
+        testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
+        testCompileOnly("org.projectlombok:lombok:1.18.30")
         testImplementation("org.junit.jupiter:junit-jupiter:5.9.2")
 
-        annotationProcessor("org.projectlombok:lombok:1.18.26")
+        annotationProcessor("org.projectlombok:lombok:1.18.30")
         compileOnly("org.projectlombok:lombok:1.18.26")
         compileOnly("com.google.code.findbugs:jsr305:3.0.2") // nullability annotations
     }
