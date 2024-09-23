@@ -8,7 +8,7 @@ dependencies {
     //annotationProcessor("com.velocitypowered:velocity-api:3.1.1")
     compileOnly("com.velocitypowered:velocity-api:3.2.0-SNAPSHOT")
     api("cloud.commandframework:cloud-velocity:1.8.3")
-    api("org.bstats:bstats-velocity:3.0.2")
+    api("org.bstats:bstats-velocity:3.1.0")
     api(projects.proxy)
     api(projects.core)
 }
