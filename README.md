@@ -38,7 +38,7 @@ BungeeCord and Velocity do not support Access Items.
 
 ---
 
-* [`CrossplatForms-Spigot.jar`](https://ci.kejonamc.dev/job/CrossplatForms/job/main/) :&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Spigot 1.8.8 - 1.19.4
+* [`CrossplatForms-Spigot.jar`](https://ci.kejonamc.dev/job/CrossplatForms/job/main/) :&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; Spigot 1.8.8 - 1.21.3
 * [`CrossplatForms-BungeeCord.jar`](https://ci.kejonamc.dev/job/CrossplatForms/job/main/) :&ensp;&ensp;&ensp; BungeeCord
 * [`CrossplatForms-Velocity.jar`](https://ci.kejonamc.dev/job/CrossplatForms/job/main/) :&ensp;&ensp;&ensp;&ensp;&ensp; Velocity 3.x
 

@@ -20,6 +20,7 @@ public class CrossplatFormsSpigot extends SpigotBase {
         registerVersion("1_14_R1");
         registerFallback("1_20_R1", "1_14_R1"); // authlib changes in 1_20_R2 - use the older adapter instead
         registerVersion("1_20_R2");
+        registerVersion("1_21_R3");
     }
 
     @Override

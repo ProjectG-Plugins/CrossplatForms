@@ -1,12 +1,12 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    id("com.github.johnrengelman.shadow")
+    id("io.github.goooler.shadow")
 }
 
 dependencies {
-    compileOnly("net.md-5:bungeecord-api:1.19-R0.1-SNAPSHOT")
-    compileOnly("com.github.SpigotMC.BungeeCord:bungeecord-proxy:b23a518") // For getting skins (dependency through jitpack)
+    compileOnly("net.md-5:bungeecord-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("net.md-5:bungeecord-proxy:1.21-R0.1-SNAPSHOT") // For getting skins (dependency through jitpack)
     api("cloud.commandframework:cloud-bungee:1.8.3")
     api("net.kyori:adventure-platform-bungeecord:4.3.0")
     implementation("org.bstats:bstats-bungeecord:3.0.2")

@@ -1,12 +1,12 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 plugins {
-    id("com.github.johnrengelman.shadow")
+    id("io.github.goooler.shadow")
 }
 
 dependencies {
     //annotationProcessor("com.velocitypowered:velocity-api:3.1.1")
-    compileOnly("com.velocitypowered:velocity-api:3.2.0-SNAPSHOT")
+    compileOnly("com.velocitypowered:velocity-api:3.4.0-SNAPSHOT")
     api("cloud.commandframework:cloud-velocity:1.8.3")
     api("org.bstats:bstats-velocity:3.0.2")
     api(projects.proxy)

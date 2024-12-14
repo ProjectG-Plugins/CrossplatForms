@@ -7,9 +7,9 @@ pluginManagement {
         gradlePluginPortal()
     }
     plugins {
-        id("net.kyori.indra.git") version "3.0.1" // getting branch and commit info at compile time
+        id("net.kyori.indra.git") version "3.1.3" // getting branch and commit info at compile time
         id("net.kyori.indra") version "3.0.1" // multi-release jar for referencing Java 16 geyser api
-        id("com.github.johnrengelman.shadow") version "7.1.2" // shadowing dependencies
+        id("io.github.goooler.shadow") version "8.1.7"// shadowing dependencies
     }
 }
 
@@ -60,3 +60,6 @@ findProject(":spigot-common:v1_14_R1")?.name = "v1_14_R1"
 
 include(":spigot-common:v1_20_R2")
 findProject(":spigot-common:v1_20_R2")?.name = "v1_20_R2"
+
+include(":spigot-common:v1_21_R3")
+findProject(":spigot-common:v1_21_R3")?.name = "v1_21_R3"
